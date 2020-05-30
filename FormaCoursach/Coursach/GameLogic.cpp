@@ -1,7 +1,7 @@
 #include<QDebug>
 #include"GameLogic.h"
 
-Pole::Pole(string input){
+Pole::Pole(QString input){
     this->word=input;
     sizeBoard = word.length();
      init(sizeBoard, sizeBoard, gameMatrix);
@@ -9,7 +9,7 @@ Pole::Pole(string input){
 }
 
 //checking of game word with litters that can be repite
-bool Word::checkingRepitsOfLitters(string input){
+bool Word::checkingRepitsOfLitters(QString input){
     int a = input.length();
     for(int  i =0; i < a; i++){
         if(input[i]==' ')
@@ -23,17 +23,17 @@ bool Word::checkingRepitsOfLitters(string input){
 }
 
 //checking game word with number of litters, number should be more=5 and less=10
-bool Word::checkSize(string input){
+bool Word::checkSize(QString input){
     if(input.length()>=5&&input.length()<=10)
         return true;
     else
         return false;
 }
 
-void Pole::init(int lines, int columns, char **&matrix){
-    matrix=new char*[lines];
+void Pole::init(int lines, int columns, QChar **&matrix){
+    matrix=new QChar*[lines];
     for(int i =0; i < lines; i++){
-        matrix[i]=new char[columns];
+        matrix[i]=new QChar[columns];
     }
 
 }
@@ -50,6 +50,23 @@ void Pole::createGameMatrix(){
     }
 }
 
+
+bool Pole::checkRowColumns(int row, int columns, QString temp){
+    for(int i =0; i < sizeBoard; i++){
+       if(gameMatrix[row][i]==temp[0]||gameMatrix[i][columns]==temp[0])
+           return false;
+    }
+    return true;
+}
+
+bool Pole::checkSizeText(QString temp){
+    int a = temp.length();
+    if(a > 1){
+        return false;
+    }else{
+        return true;
+    }
+}
 
 Pole::~Pole(){
 }

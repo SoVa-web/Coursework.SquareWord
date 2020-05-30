@@ -21,9 +21,8 @@ void inputGameWord::on_pushButton_clicked()
     //setlocale(LC_ALL, ".UTF-8");
     Word input;
   QString gameWord = ui->lineEdit->text();
-  string boof = gameWord.toStdString();
+  QString boof = gameWord;
   if(!input.checkingRepitsOfLitters(boof)||!input.checkSize(boof)){
-      cout<<boof;
       QMessageBox::about(this, "rules",
                                " Enter a word without repetitions and spaces, from 5 to 10 letters");
   }else{

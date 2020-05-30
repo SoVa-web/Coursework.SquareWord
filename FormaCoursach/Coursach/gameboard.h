@@ -23,6 +23,9 @@ public:
      gameBoard(Pole&pole, QWidget *parent = nullptr  );
     ~gameBoard();
 
+private slots:
+     void on_tableWidget_cellEntered(int row, int column);
+
 private:
     Ui::gameBoard *ui;
 };

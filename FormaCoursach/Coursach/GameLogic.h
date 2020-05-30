@@ -14,8 +14,8 @@ using namespace std;
 class Word{
 public:
     //prototypes
-    bool checkingRepitsOfLitters(string input);
-    bool checkSize(string input);
+    bool checkingRepitsOfLitters(QString input);
+    bool checkSize(QString input);
     //varieties
 
 };
@@ -23,12 +23,14 @@ public:
 class Pole{
 public:
     //prototypes
-    Pole(string input);
+    Pole(QString input);
     ~Pole();
-    void init(int lines, int columns, char**& matrix);
+    void init(int lines, int columns, QChar**& matrix);
     void createGameMatrix();
-    string word;
-    char** gameMatrix;
+    bool checkRowColumns(int row, int columns, QString temp);
+    bool checkSizeText(QString temp);
+    QString word;
+    QChar** gameMatrix;
     int sizeBoard= word.length();
 };
 
