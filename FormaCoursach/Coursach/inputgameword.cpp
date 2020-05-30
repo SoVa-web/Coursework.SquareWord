@@ -1,5 +1,6 @@
 #include "inputgameword.h"
 #include "ui_inputgameword.h"
+#include<iomanip>
 
 inputGameWord::inputGameWord(QWidget *parent) :
     QWidget(parent),
@@ -17,6 +18,7 @@ inputGameWord::~inputGameWord()
 
 void inputGameWord::on_pushButton_clicked()
 {
+    //setlocale(LC_ALL, ".UTF-8");
     Word input;
   QString gameWord = ui->lineEdit->text();
   string boof = gameWord.toStdString();
@@ -26,6 +28,7 @@ void inputGameWord::on_pushButton_clicked()
                                " Enter a word without repetitions and spaces, from 5 to 10 letters");
   }else{
       Pole pole = Pole(boof);
+      pole.createGameMatrix();
       hide();
       gameBoard *window = new gameBoard(pole);
       window->show();

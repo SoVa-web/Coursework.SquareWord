@@ -12,7 +12,11 @@ gameBoard::gameBoard(Pole&pole, QWidget *parent) :
 
     for(int i =0; i < ui->tableWidget->rowCount();i++){
         for(int j =0; j < ui->tableWidget->columnCount();j++){
-
+            char* a = new char[1];
+            a[0]=pole.gameMatrix[i][j];
+            QTableWidgetItem *itm = new QTableWidgetItem();
+            ui->tableWidget->setItem(i,j, itm);
+           // qDebug(pole.gameMatrix[i]);
         }
     }
 

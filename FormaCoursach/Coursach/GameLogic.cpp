@@ -1,9 +1,11 @@
+#include<QDebug>
 #include"GameLogic.h"
 
 Pole::Pole(string input){
     this->word=input;
     sizeBoard = word.length();
-    init(sizeBoard, sizeBoard, gameMatrix);
+     init(sizeBoard, sizeBoard, gameMatrix);
+
 }
 
 //checking of game word with litters that can be repite
@@ -50,5 +52,4 @@ void Pole::createGameMatrix(){
 
 
 Pole::~Pole(){
-    delete gameMatrix;
 }

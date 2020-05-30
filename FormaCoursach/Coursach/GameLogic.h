@@ -29,7 +29,7 @@ public:
     void createGameMatrix();
     string word;
     char** gameMatrix;
-    int sizeBoard;
+    int sizeBoard= word.length();
 };
 
 
