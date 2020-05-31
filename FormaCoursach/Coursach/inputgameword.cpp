@@ -26,10 +26,12 @@ void inputGameWord::on_pushButton_clicked()
       QMessageBox::about(this, "rules",
                                " Enter a word without repetitions and spaces, from 5 to 10 letters");
   }else{
-      Pole pole = Pole(boof);
-      pole.createGameMatrix();
+      Pole::instance()->word = boof;
+      Pole::instance()->sizeBoard = boof.length();
+      Pole::instance()->init(boof.length(), boof.length(), Pole::instance()->gameMatrix);
+      Pole::instance()->createGameMatrix();
       hide();
-      gameBoard *window = new gameBoard(&pole);
+      gameBoard *window = new gameBoard();
       window->show();
   }
 }

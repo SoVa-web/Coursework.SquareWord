@@ -23,8 +23,11 @@ public:
 class Pole{
     public:
     //prototypes
-    Pole(QString input);
-    ~Pole();
+  static Pole*instance(){
+      static Pole pole;
+      return &pole;
+  }
+
     void init(int lines, int columns, QChar**& matrix);
     void createGameMatrix();
     bool checkRowColumns(int row, int columns, QChar temp);
@@ -34,6 +37,9 @@ class Pole{
     QString word;
     QChar** gameMatrix;
     int sizeBoard= word.length();
+
+    private:
+    Pole(){}
 };
 
 

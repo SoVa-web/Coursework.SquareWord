@@ -1,18 +1,13 @@
 #include<QDebug>
 #include"GameLogic.h"
 
-Pole::Pole(QString input){
-    this->word=input;
-    sizeBoard = word.length();
-     init(sizeBoard, sizeBoard, gameMatrix);
 
-}
 
 //checking of game word with litters that can be repite
 bool Word::checkingRepitsOfLitters(QString input){
     int a = input.length();
     for(int  i =0; i < a; i++){
-        if(input[i]=='0')
+        if(input[i]==' ')
             return false;
         for(int j =0; j < a; j++){
             if(i != j&&input[i]==input[j])
@@ -45,7 +40,7 @@ void Pole::createGameMatrix(){
     }
     for(int i =1; i < a; i++){
         for(int j =0; j<a; j++){
-            this->gameMatrix[i][j] = '0';
+            this->gameMatrix[i][j] = ' ';
         }
     }
 }
@@ -83,5 +78,3 @@ qDebug()<<newStr;
 return  newStr;
 }
 
-Pole::~Pole(){
-}

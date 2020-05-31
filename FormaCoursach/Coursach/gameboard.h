@@ -19,8 +19,7 @@ class gameBoard : public QWidget
     Q_OBJECT
 
 public:
-    Pole*pole;
-     gameBoard(Pole*pole, QWidget *parent = nullptr  );
+     gameBoard( QWidget *parent = nullptr  );
     ~gameBoard();
 
 public:
