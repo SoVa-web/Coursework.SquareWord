@@ -20,13 +20,14 @@ class gameBoard : public QWidget
     Q_OBJECT
 
 public:
+    Pole&pole;
      gameBoard(Pole&pole, QWidget *parent = nullptr  );
     ~gameBoard();
 
 public:
 
 private slots:
-     void on_pushButton_clicked(Pole&pole);
+     void on_pushButton_clicked();
 
 private:
     Ui::gameBoard *ui;

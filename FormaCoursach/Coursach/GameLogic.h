@@ -21,7 +21,7 @@ public:
 };
 
 class Pole{
-public:
+    public:
     //prototypes
     Pole(QString input);
     ~Pole();

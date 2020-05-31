@@ -12,7 +12,7 @@ Pole::Pole(QString input){
 bool Word::checkingRepitsOfLitters(QString input){
     int a = input.length();
     for(int  i =0; i < a; i++){
-        if(input[i]==' ')
+        if(input[i]=='0')
             return false;
         for(int j =0; j < a; j++){
             if(i != j&&input[i]==input[j])
@@ -45,7 +45,7 @@ void Pole::createGameMatrix(){
     }
     for(int i =1; i < a; i++){
         for(int j =0; j<a; j++){
-            this->gameMatrix[i][j] = ' ';
+            this->gameMatrix[i][j] = '0';
         }
     }
 }

@@ -4,14 +4,12 @@
 #include<QKeyEvent>
 
 gameBoard::gameBoard(Pole&pole, QWidget *parent) :
-    QWidget(parent),
+    QWidget(parent), pole(pole),
     ui(new Ui::gameBoard)
 {
-
     ui->setupUi(this);
     ui->tableWidget->setRowCount(pole.sizeBoard);
     ui->tableWidget->setColumnCount(pole.sizeBoard);
-
     for(int i =0; i < ui->tableWidget->rowCount();i++){
         for(int j =0; j < ui->tableWidget->columnCount();j++){
             QTableWidgetItem *itm = new QTableWidgetItem(pole.gameMatrix[i][j]);
@@ -19,7 +17,7 @@ gameBoard::gameBoard(Pole&pole, QWidget *parent) :
             ui->tableWidget->resizeColumnsToContents();
             itm->setBackgroundColor(Qt::blue);
             itm->setTextColor(Qt::white);
-           if(pole.gameMatrix[i][j]!=' '){
+           if(pole.gameMatrix[i][j]!='0'){
                 ui->tableWidget->item(i,j)->setFlags(itm->flags() & ~Qt::ItemIsEditable);
                //ui->tableWidget->setItemSelected(itm, false);
                  itm->setBackgroundColor(Qt::green);
@@ -28,6 +26,7 @@ gameBoard::gameBoard(Pole&pole, QWidget *parent) :
         }
 
     }
+    qDebug()<<this->pole.sizeBoard;
 }
 
 
@@ -46,16 +45,14 @@ gameBoard::~gameBoard()
     }
 }*/
 
-void gameBoard::on_pushButton_clicked(Pole&pole)
+void gameBoard::on_pushButton_clicked()
 {
-    int t =0;
-    while(t<1000){
-        t++;
-        for(int i =0; i< pole.sizeBoard; i++){
-            for(int j=0; j <pole.sizeBoard; j++){
-                QString a = ui->tableWidget->item(i,j)->text();
-                qDebug()<<a;
+QString a;
+        for(int i =0; i< this->pole.sizeBoard; i++){
+            for(int j=0; j <this->pole.sizeBoard; j++){
+                a = ui->tableWidget->item(i,j)->text();
+qDebug()<<pole.word;
             }
         }
-    }
+
 }
