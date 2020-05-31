@@ -51,9 +51,9 @@ void Pole::createGameMatrix(){
 }
 
 
-bool Pole::checkRowColumns(int row, int columns, QString temp){
+bool Pole::checkRowColumns(int row, int columns, QChar temp){
     for(int i =0; i < sizeBoard; i++){
-       if(gameMatrix[row][i]==temp[0]||gameMatrix[i][columns]==temp[0])
+       if(gameMatrix[row][i]==temp||gameMatrix[i][columns]==temp)
            return false;
     }
     return true;
@@ -66,6 +66,21 @@ bool Pole::checkSizeText(QString temp){
     }else{
         return true;
     }
+}
+
+QString Pole::deleteSpace(QString temp){
+    int a = temp.length();
+    QString newStr;
+    for(int i =0; i < a; i++){
+      if(temp[i] != ' '){
+           newStr+=temp[i];
+      }
+    }
+    if(newStr == ""){
+        newStr = " ";
+    }
+qDebug()<<newStr;
+return  newStr;
 }
 
 Pole::~Pole(){

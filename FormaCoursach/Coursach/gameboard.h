@@ -23,11 +23,14 @@ public:
      gameBoard(Pole&pole, QWidget *parent = nullptr  );
     ~gameBoard();
 
+public:
+
 private slots:
-     void on_tableWidget_cellEntered(int row, int column);
+     void on_pushButton_clicked(Pole&pole);
 
 private:
     Ui::gameBoard *ui;
+    //void keyPressEvent(QKeyEvent* event);
 };
 
 #endif // GAMEBOARD_H

@@ -27,8 +27,10 @@ public:
     ~Pole();
     void init(int lines, int columns, QChar**& matrix);
     void createGameMatrix();
-    bool checkRowColumns(int row, int columns, QString temp);
+    bool checkRowColumns(int row, int columns, QChar temp);
     bool checkSizeText(QString temp);
+    QString deleteSpace(QString temp);
+    bool checkDiagonal();
     QString word;
     QChar** gameMatrix;
     int sizeBoard= word.length();
