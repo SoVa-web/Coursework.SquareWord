@@ -29,7 +29,7 @@ void inputGameWord::on_pushButton_clicked()
       Pole pole = Pole(boof);
       pole.createGameMatrix();
       hide();
-      gameBoard *window = new gameBoard(pole);
+      gameBoard *window = new gameBoard(&pole);
       window->show();
   }
 }

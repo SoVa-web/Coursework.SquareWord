@@ -5,7 +5,6 @@
 
 #include <QGuiApplication>
 #include <QWidget>
-#include"GameLogic.h"
 #include<QMessageBox>
 #include<QDebug>
 #include<string>
@@ -20,8 +19,8 @@ class gameBoard : public QWidget
     Q_OBJECT
 
 public:
-    Pole&pole;
-     gameBoard(Pole&pole, QWidget *parent = nullptr  );
+    Pole*pole;
+     gameBoard(Pole*pole, QWidget *parent = nullptr  );
     ~gameBoard();
 
 public:

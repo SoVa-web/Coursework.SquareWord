@@ -3,21 +3,22 @@
 #include<QTableWidget>
 #include<QKeyEvent>
 
-gameBoard::gameBoard(Pole&pole, QWidget *parent) :
-    QWidget(parent), pole(pole),
+gameBoard::gameBoard(Pole*pole, QWidget *parent) :
+    QWidget(parent),
     ui(new Ui::gameBoard)
 {
+    this->pole = pole;
     ui->setupUi(this);
-    ui->tableWidget->setRowCount(pole.sizeBoard);
-    ui->tableWidget->setColumnCount(pole.sizeBoard);
+    ui->tableWidget->setRowCount(this->pole->sizeBoard);
+    ui->tableWidget->setColumnCount(this->pole->sizeBoard);
     for(int i =0; i < ui->tableWidget->rowCount();i++){
         for(int j =0; j < ui->tableWidget->columnCount();j++){
-            QTableWidgetItem *itm = new QTableWidgetItem(pole.gameMatrix[i][j]);
+            QTableWidgetItem *itm = new QTableWidgetItem(this->pole->gameMatrix[i][j]);
             ui->tableWidget->setItem(i, j, itm);
             ui->tableWidget->resizeColumnsToContents();
             itm->setBackgroundColor(Qt::blue);
             itm->setTextColor(Qt::white);
-           if(pole.gameMatrix[i][j]!='0'){
+           if(this->pole->gameMatrix[i][j]!='0'){
                 ui->tableWidget->item(i,j)->setFlags(itm->flags() & ~Qt::ItemIsEditable);
                //ui->tableWidget->setItemSelected(itm, false);
                  itm->setBackgroundColor(Qt::green);
@@ -26,7 +27,7 @@ gameBoard::gameBoard(Pole&pole, QWidget *parent) :
         }
 
     }
-    qDebug()<<this->pole.sizeBoard;
+    qDebug()<<this->pole;
 }
 
 
@@ -48,10 +49,10 @@ gameBoard::~gameBoard()
 void gameBoard::on_pushButton_clicked()
 {
 QString a;
-        for(int i =0; i< this->pole.sizeBoard; i++){
-            for(int j=0; j <this->pole.sizeBoard; j++){
+        for(int i =0; i< this->pole->sizeBoard; i++){
+            for(int j=0; j <this->pole->sizeBoard; j++){
                 a = ui->tableWidget->item(i,j)->text();
-qDebug()<<pole.word;
+qDebug()<<this->pole;
             }
         }
 
