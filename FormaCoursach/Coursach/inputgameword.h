@@ -11,7 +11,7 @@
 #include<string>
 #include"gameboard.h"
 #include<QLocale>
-
+#include<QFile>
 
 using namespace std;
 

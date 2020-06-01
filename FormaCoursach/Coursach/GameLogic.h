@@ -8,6 +8,10 @@
 #include<iostream>
 #include<string>
 #include<QString>
+#include<QFile>
+#include<QStringList>
+#include <QCoreApplication>
+#include <QDateTime>
 
 using namespace std;
 
@@ -29,16 +33,19 @@ class Pole{
   }
 
     void init(int lines, int columns, QChar**& matrix);
-    void createGameMatrix();
+    void createGameMatrix(Word&input);
     bool checkRowColumns(int row, int columns, QChar temp);
     bool checkSizeText(QString temp);
     QString deleteSpace(QString temp);
     bool checkDiagonal();
     bool checkStatusMatrix();
     bool checkSetOfLLitters(QChar temp);
+    void readingFile();
+    //varieties
     QString word;
     QChar** gameMatrix;
     int sizeBoard= word.length();
+    QStringList mass;
 
     private:
     Pole(){}

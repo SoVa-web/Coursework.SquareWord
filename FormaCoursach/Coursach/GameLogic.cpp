@@ -42,7 +42,7 @@ bool Pole::checkSetOfLLitters(QChar temp){
     return false;
 }
 
-void Pole::createGameMatrix(){
+void Pole::createGameMatrix(Word&input){
     int a = this->word.length();
     for(int i =0; i < a; i++){
         this->gameMatrix[0][i] = word[i];
@@ -51,6 +51,61 @@ void Pole::createGameMatrix(){
         for(int j =0; j<a; j++){
             this->gameMatrix[i][j] = ' ';
         }
+    }
+    if(a>6){
+        readingFile();
+        QStringList boof;
+        int l =0;
+        for(int i =0; i < mass.size();i++){
+            int k =0;
+            for(int j =0; j < mass[i].length(); j++){
+                for(int h =0; h < a; h++){
+                    if(mass[i][j]==word[h]){
+                        k++;
+                    }
+                }
+            }
+            if(k==mass[i].length()&&input.checkingRepitsOfLitters(mass[i])){
+                boof.append(mass[i]);
+                qDebug()<<boof.size();
+            }
+        }
+       for(int i =0; i < boof.size(); i++){
+           int x, y, t;
+           int high  = a-1-boof[i].length();
+           x = qrand() % ((high + 1) - 1) + 1;
+           y = qrand() % ((high + 1) - 0) + 0;
+           t = y;
+           for(int j =0; j < boof[i].length(); j++){
+               gameMatrix[x][y] = boof[i][j];
+               y++;
+           }
+           bool win = true;
+           for(int i =0; i < a;i++){
+               for(int j =0; j < a; j++){
+                   if(checkRowColumns(i,j,gameMatrix[i][j])){
+                   }else{
+                         win = false;
+                   }
+               }
+           }
+           if(!checkDiagonal()){
+                win = false;
+           }
+           if(!win){
+               for(int j =0; j < boof[i].length(); j++){
+                   gameMatrix[x][t] = ' ';
+                   t++;
+               }
+           }else{
+
+             l++;
+             if(l ==2)
+                 break;
+           }
+       }
+
+
     }
 }
 
@@ -115,7 +170,7 @@ bool Pole::checkDiagonal(){
 return true;
 }
 
-bool Pole::checkStatusMatrix(){
+/* Pole::checkStatusMatrix(){
     if(!checkDiagonal())
         return  false;
     for(int i =0; i < sizeBoard; i++){
@@ -126,4 +181,24 @@ bool Pole::checkStatusMatrix(){
     }
 
     return true;
+}*/
+
+void Pole::readingFile(){
+    QFile file("setWords.txt");
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+            return;
+        QTextStream in(&file);
+        while (!in.atEnd())
+       {
+           QString line = in.readLine();
+           QString b;
+           for(int i =0; i  <line.length(); i++){
+               if(line[i] != ' '&&line[i] != '\n'){
+                   b+=line[i];
+               }
+           }
+           mass.append( b );
+
+        }
+       qDebug() << mass[ 100 ];
 }

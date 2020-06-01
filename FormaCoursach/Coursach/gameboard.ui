@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>730</width>
-    <height>506</height>
+    <width>900</width>
+    <height>900</height>
    </rect>
   </property>
   <property name="palette">
@@ -79,6 +79,7 @@
   </property>
   <property name="font">
    <font>
+    <pointsize>16</pointsize>
     <kerning>false</kerning>
    </font>
   </property>
@@ -774,6 +775,56 @@
      </property>
      <property name="text">
       <string>Are you right?</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="pushButton_2">
+     <property name="palette">
+      <palette>
+       <active>
+        <colorrole role="ButtonText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>33</red>
+           <green>27</green>
+           <blue>191</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </active>
+       <inactive>
+        <colorrole role="ButtonText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>33</red>
+           <green>27</green>
+           <blue>191</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </inactive>
+       <disabled>
+        <colorrole role="ButtonText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>120</red>
+           <green>120</green>
+           <blue>120</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </disabled>
+      </palette>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+       <italic>true</italic>
+      </font>
+     </property>
+     <property name="text">
+      <string>Exit</string>
      </property>
     </widget>
    </item>

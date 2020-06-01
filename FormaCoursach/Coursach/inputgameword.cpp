@@ -1,6 +1,7 @@
 #include "inputgameword.h"
 #include "ui_inputgameword.h"
 #include<iomanip>
+#include<QIODevice>
 
 inputGameWord::inputGameWord(QWidget *parent) :
     QWidget(parent),
@@ -30,7 +31,7 @@ void inputGameWord::on_pushButton_clicked()
       Pole::instance()->word = boof;
       Pole::instance()->sizeBoard = boof.length();
       Pole::instance()->init(boof.length(), boof.length(), Pole::instance()->gameMatrix);
-      Pole::instance()->createGameMatrix();
+      Pole::instance()->createGameMatrix(input);
       hide();
       gameBoard *window = new gameBoard();
       window->show();

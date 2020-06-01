@@ -9,6 +9,7 @@
 #include<QDebug>
 #include<string>
 #include"GameLogic.h"
+#include<QApplication>
 
 namespace Ui {
 class gameBoard;
@@ -24,8 +25,11 @@ public:
 
 public:
 void  keyPressEvent(QKeyEvent* event);
+void checkingProcess();
 private slots:
      void on_pushButton_clicked();
+
+     void on_pushButton_2_clicked();
 
 private:
     Ui::gameBoard *ui;
