@@ -34,6 +34,8 @@ class Pole{
     bool checkSizeText(QString temp);
     QString deleteSpace(QString temp);
     bool checkDiagonal();
+    bool checkStatusMatrix();
+    bool//for check wet of litters
     QString word;
     QChar** gameMatrix;
     int sizeBoard= word.length();

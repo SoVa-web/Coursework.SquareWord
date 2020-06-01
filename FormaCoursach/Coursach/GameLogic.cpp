@@ -78,3 +78,36 @@ qDebug()<<newStr;
 return  newStr;
 }
 
+bool Pole::checkDiagonal(){
+    for(int i = 0 ; i < this->sizeBoard; i++){
+       for(int j = 0; j < this-> sizeBoard; j++){
+        if(i != j){
+            if(gameMatrix[i][i]==gameMatrix[j][j]){
+                return  false;
+            }
+        }
+       }
+}
+     for(int i = 0 ; i < this->sizeBoard; i++){
+        for(int j = 0; j < this-> sizeBoard; j++){
+         if(i != j){
+             if(gameMatrix[i][sizeBoard-i-1]==gameMatrix[j][sizeBoard-j-1]){
+                return  false;
+            }
+        }
+       }
+}
+return true;
+}
+
+bool Pole::checkStatusMatrix(){
+    if(!checkDiagonal())
+        return  false;
+    for(int i =0; i < sizeBoard; i++){
+        for(int j =0; j < sizeBoard; j++){
+            if(!checkRowColumns(i, j, gameMatrix[i][j]))
+                return false;
+        }
+    }
+    return true;
+}

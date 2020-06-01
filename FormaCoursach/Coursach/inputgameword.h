@@ -10,6 +10,7 @@
 #include<QDebug>
 #include<string>
 #include"gameboard.h"
+#include<QLocale>
 
 
 using namespace std;

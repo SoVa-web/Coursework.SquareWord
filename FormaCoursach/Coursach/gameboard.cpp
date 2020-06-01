@@ -51,6 +51,7 @@ QString a;
         for(int i =0; i< Pole::instance()->sizeBoard; i++){
             for(int j=0; j <Pole::instance()->sizeBoard; j++){
                 a = ui->tableWidget->item(i,j)->text();
+                a = a.toLower();
 qDebug()<<a;
             }
         }
