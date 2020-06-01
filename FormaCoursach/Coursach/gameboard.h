@@ -23,7 +23,7 @@ public:
     ~gameBoard();
 
 public:
-
+void  keyPressEvent(QKeyEvent* event);
 private slots:
      void on_pushButton_clicked();
 

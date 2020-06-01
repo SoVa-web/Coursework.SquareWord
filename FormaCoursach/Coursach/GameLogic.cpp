@@ -33,6 +33,15 @@ void Pole::init(int lines, int columns, QChar **&matrix){
 
 }
 
+bool Pole::checkSetOfLLitters(QChar temp){
+    for(int i =0; i <sizeBoard; i++){
+        if(word[i]==temp){
+            return true;
+        }
+    }
+    return false;
+}
+
 void Pole::createGameMatrix(){
     int a = this->word.length();
     for(int i =0; i < a; i++){
@@ -48,8 +57,14 @@ void Pole::createGameMatrix(){
 
 bool Pole::checkRowColumns(int row, int columns, QChar temp){
     for(int i =0; i < sizeBoard; i++){
-       if(gameMatrix[row][i]==temp||gameMatrix[i][columns]==temp)
-           return false;
+       if(temp!=' '){
+           if(gameMatrix[row][i]==temp&&i!=columns)
+               return false;
+           if(gameMatrix[i][columns]==temp&&i!=row)
+               return false;
+       }else{
+           return true;
+       }
     }
     return true;
 }
@@ -81,7 +96,7 @@ return  newStr;
 bool Pole::checkDiagonal(){
     for(int i = 0 ; i < this->sizeBoard; i++){
        for(int j = 0; j < this-> sizeBoard; j++){
-        if(i != j){
+        if(i != j&&gameMatrix[i][i]!=' '&&gameMatrix[j][j]!=' '){
             if(gameMatrix[i][i]==gameMatrix[j][j]){
                 return  false;
             }
@@ -90,7 +105,7 @@ bool Pole::checkDiagonal(){
 }
      for(int i = 0 ; i < this->sizeBoard; i++){
         for(int j = 0; j < this-> sizeBoard; j++){
-         if(i != j){
+         if(i != j&&gameMatrix[i][sizeBoard-i-1]!=' '&&gameMatrix[j][sizeBoard-j-1]!=' '){
              if(gameMatrix[i][sizeBoard-i-1]==gameMatrix[j][sizeBoard-j-1]){
                 return  false;
             }
@@ -109,5 +124,6 @@ bool Pole::checkStatusMatrix(){
                 return false;
         }
     }
+
     return true;
 }
