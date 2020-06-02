@@ -17,9 +17,9 @@ bool Word::checkingRepitsOfLitters(QString input){
     return true;
 }
 
-//checking game word with number of litters, number should be more=5 and less=10
+//checking game word with number of litters, number should be more=4 and less=10
 bool Word::checkSize(QString input){
-    if(input.length()>=5&&input.length()<=10)
+    if(input.length()>=4&&input.length()<=10)
         return true;
     else
         return false;
@@ -52,7 +52,7 @@ void Pole::createGameMatrix(Word&input){
             this->gameMatrix[i][j] = ' ';
         }
     }
-    if(a>6){
+    if(a>5){
         readingFile();
         QStringList boof;
         int l =0;
@@ -72,8 +72,10 @@ void Pole::createGameMatrix(Word&input){
         }
        for(int i =0; i < boof.size(); i++){
            int x, y, t;
-           int high  = a-1-boof[i].length();
+           int high  = a-1;
+           srand(time(NULL));
            x = qrand() % ((high + 1) - 1) + 1;
+            high  = a-1-boof[i].length();
            y = qrand() % ((high + 1) - 0) + 0;
            t = y;
            for(int j =0; j < boof[i].length(); j++){
@@ -124,14 +126,6 @@ bool Pole::checkRowColumns(int row, int columns, QChar temp){
     return true;
 }
 
-bool Pole::checkSizeText(QString temp){
-    int a = temp.length();
-    if(a > 1){
-        return false;
-    }else{
-        return true;
-    }
-}
 
 QString Pole::deleteSpace(QString temp){
     int a = temp.length();
@@ -170,18 +164,6 @@ bool Pole::checkDiagonal(){
 return true;
 }
 
-/* Pole::checkStatusMatrix(){
-    if(!checkDiagonal())
-        return  false;
-    for(int i =0; i < sizeBoard; i++){
-        for(int j =0; j < sizeBoard; j++){
-            if(!checkRowColumns(i, j, gameMatrix[i][j]))
-                return false;
-        }
-    }
-
-    return true;
-}*/
 
 void Pole::readingFile(){
     QFile file("setWords.txt");

@@ -35,10 +35,10 @@ class Pole{
     void init(int lines, int columns, QChar**& matrix);
     void createGameMatrix(Word&input);
     bool checkRowColumns(int row, int columns, QChar temp);
-    bool checkSizeText(QString temp);
+    //bool checkSizeText(QString temp);
     QString deleteSpace(QString temp);
     bool checkDiagonal();
-    bool checkStatusMatrix();
+    //bool checkStatusMatrix();
     bool checkSetOfLLitters(QChar temp);
     void readingFile();
     //varieties

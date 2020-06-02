@@ -19,14 +19,13 @@ inputGameWord::~inputGameWord()
 
 void inputGameWord::on_pushButton_clicked()
 {
-    //setlocale(LC_ALL, ".UTF-8");
     Word input;
   QString gameWord = ui->lineEdit->text();
   QString boof = gameWord;
   boof = boof.toLower();
   if(!input.checkingRepitsOfLitters(boof)||!input.checkSize(boof)){
       QMessageBox::about(this, "Rules",
-                               " Enter a word without repetitions and spaces, from 5 to 10 letters");
+                               " Enter a word without repetitions and spaces, from 4 to 10 letters");
   }else{
       Pole::instance()->word = boof;
       Pole::instance()->sizeBoard = boof.length();
